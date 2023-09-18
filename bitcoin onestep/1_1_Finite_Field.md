@@ -183,36 +183,35 @@
         > $$am+bn=g$$
         > 
         > - 검증은 다소 복잡하니 다음 코드를 통해서 확인해보자.
-        > ```python
-        > def extended_gcd(a, b):
-        >     if b == 0:
-        >        return a, 1, 0
-        >
-        >    gcd, x1, y1 = extended_gcd(b, a % b)
-        >
-        >    x = y1
-        >    y = x1 - (a // b) * y1
-        > 
-        >    return gcd, x, y
-        >
-        > # 사용 예시
-        > a = 48
-        > b = 18
-        > 
-        > gcd, x, y = extended_gcd(a, b)
-        > 
-        > print(f"GCD({a}, {b}) = {gcd}")
-        > print(f"x = {x}, y = {y}")
-        > print(f"validate : {a*x+b*y == gcd}")
-        > 
-        > #------ 결과 ------
-        > GCD(48, 18) = 6
-        > x = -1, y = 3
-        > validate : True
-        >    ```
-            
-        </aside>
-        
+```python
+def extended_gcd(a, b):
+    if b == 0:
+       return a, 1, 0
+
+   gcd, x1, y1 = extended_gcd(b, a % b)
+
+   x = y1
+   y = x1 - (a // b) * y1
+
+   return gcd, x, y
+
+# 사용 예시
+a = 48
+b = 18
+
+gcd, x, y = extended_gcd(a, b)
+
+print(f"GCD({a}, {b}) = {gcd}")
+print(f"x = {x}, y = {y}")
+print(f"validate : {a*x+b*y == gcd}")
+
+#------ 결과 ------
+GCD(48, 18) = 6
+x = -1, y = 3
+validate : True
+```
+
+
         - 나눗셈은 역원을 곱한다는 것을 의미하므로 0을 제외한 1~6의 역원을 찾아 곱해주면 된다.
         - 예를 들어 7의 나머지로 구성된 유한체에서 3의 역원을 찾아보자.
             - 1~6의 모든 수와 7은 서로소이다. (우리는 소수의 완전잉여계를 다루고 있다.)
@@ -254,9 +253,9 @@
         > 
         > - 잉여계의 동치류에 의하여 임의의 n에 대해 다음을 만족한다.
         >
-        > $$\{1, 2, \cdots, p-1\} = \{n\%p, 2n\%p, \cdots , (p-1)n\%p\}$$
+        > $$\\{1, 2, \cdots, p-1\\} = \\{n\%p, 2n\%p, \cdots , (p-1)n\%p\\}$$
         > 
-        > $$ex: \{1, 2, 3,4,5,6\} = \{5\%7, 10\%7, \cdots , 30\%7\} = \{5, 3, 1, 6, 4, 2\}$$
+        > $$ex: \\{1, 2, 3,4,5,6\\} = \\{5\%7, 10\%7, \cdots , 30\%7\\} = \\{5, 3, 1, 6, 4, 2\\}$$
         > 
         > - 따라서 왼쪽 집합의 원소를 다 곱한것과 오른쪽 집합의 원소를 다 곱한 것은 같다.
         > 
