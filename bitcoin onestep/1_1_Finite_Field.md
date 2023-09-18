@@ -183,33 +183,34 @@
         > $$am+bn=g$$
         > 
         > - 검증은 다소 복잡하니 다음 코드를 통해서 확인해보자.
-```python
-def extended_gcd(a, b):
-    if b == 0:
-       return a, 1, 0
+            ```python
+            # 유클리드 호제법 예시 구현
+            def extended_gcd(a, b):
+                if b == 0:
+                return a, 1, 0
 
-   gcd, x1, y1 = extended_gcd(b, a % b)
+            gcd, x1, y1 = extended_gcd(b, a % b)
 
-   x = y1
-   y = x1 - (a // b) * y1
+            x = y1
+            y = x1 - (a // b) * y1
 
-   return gcd, x, y
+            return gcd, x, y
 
-# 사용 예시
-a = 48
-b = 18
+            # 사용 예시
+            a = 48
+            b = 18
 
-gcd, x, y = extended_gcd(a, b)
+            gcd, x, y = extended_gcd(a, b)
 
-print(f"GCD({a}, {b}) = {gcd}")
-print(f"x = {x}, y = {y}")
-print(f"validate : {a*x+b*y == gcd}")
+            print(f"GCD({a}, {b}) = {gcd}")
+            print(f"x = {x}, y = {y}")
+            print(f"validate : {a*x+b*y == gcd}")
 
-#------ 결과 ------
-GCD(48, 18) = 6
-x = -1, y = 3
-validate : True
-```
+            #------ 결과 ------
+            GCD(48, 18) = 6
+            x = -1, y = 3
+            validate : True
+            ```
 
 
         - 나눗셈은 역원을 곱한다는 것을 의미하므로 0을 제외한 1~6의 역원을 찾아 곱해주면 된다.
